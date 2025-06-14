@@ -1,13 +1,13 @@
 # Basic Information 
-title: Your Name
+title: Aditya Kumar
 position: Ph.D. Student
-affiliation: Your Affiliation
-email: yourname (at) example.edu
+affiliation: Purdue University
+email: kumar976 (at) purdue.edu
 
 # Search Engine Optimization (SEO)
 # The following information is used to improve the website traffic from search engines, e.g., Google.
-keywords: minimal light
-description: The Minimal Light is a simple and elegant jekyll theme for academic personal homepage.
+keywords: aditya kumar
+description: Aditya Kumar is a Computer Science Ph.D. student at Purdue University, specializing in Computer Graphics and Vision. Previously, he studied at The University of Arizona. 
 canonical: https://minimal-light-theme.yliu.me/
 
 # Links 
@@ -30,7 +30,7 @@ enable_footnote: true
 
 # Auto Dark Mode
 # You may use the option to disable the automatic dark theme
-auto_dark_mode: true
+auto_dark_mode: false
 
 # Font
 # You can use this option to choose between Serif or Sans Serif fonts.
@@ -38,7 +38,7 @@ font: "Serif" # or "Sans Serif"
 
 # Google Analytics ID
 # Please remove this if you don't use Google Analytics
-google_analytics: UA-111540567-4
+google_analytics: 
 
 # Use this project as a remote theme for GitHub Pages
 # See the guide here: https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/adding-a-theme-to-your-github-pages-site-using-jekyll
@@ -48,10 +48,9 @@ remote_theme: yaoyao-liu/minimal-light
 exclude:
   - Gemfile
   - Gemfile.lock
-  - README.md
-  - README_zh_Hans.md
-  - README_zh_Hant.md
-  - README_de.md
   - LICENSE
   - minimal-light.gemspec
   - html_source_file/
+
+plugins:
+  - jekyll-last-modified-at
