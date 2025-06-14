@@ -1,0 +1,814 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+/* MIXINS */
+@mixin newBodyText($float, $fontSize, $width) {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    float: $float;
+    font-size: $fontSize;
+    color: white;
+    font-weight: 400;
+    padding: 2.5vw;
+    width: $width;
+}
+
+@mixin emphasis() {
+    .emphasis {
+        display: inline;
+        font-size: 3vw;
+        font-weight: 500;
+    }
+}
+
+@mixin note($align) {
+    text-align: $align;
+    color: white;
+    font-weight: 400;
+    font-size: 1vw;
+    padding: 1.8vh;
+}
+
+/*Scroll bar*/
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(90, 90, 90);
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+//Scroll Progress Bar
+#scroll-progress {
+    position: fixed;
+    top: 0;
+    width: 0%;
+    height: 1vh;
+    background-color: yellow;
+    z-index: 5;
+}
+/*General CSS properites*/
+html {
+    //scroll snap
+    scroll-snap-type: mandatory;
+    scroll-snap-points-y: repeat(100vh);
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+}
+
+body {
+    display: grid;
+    background-repeat: no-repeat;
+    background-image: linear-gradient(to bottom right, black, rgb(55, 55, 55));
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden !important;
+    overflow: overlay;
+}
+
+section {
+    scroll-snap-align: start;
+    position: relative;
+    font-family: "Poppins", sans-serif;
+    height: 100vh;
+}
+
+/*Link styling begins here*/
+
+a {
+    color: inherit;
+    font-weight: 800;
+    text-decoration: none;
+
+    /*Arrow link in the intro section*/
+    .down-arrow {
+        position: absolute;
+        top: 85vh;
+        left: 50%;
+        width: 0;
+        height: 30px;
+        border: 2px solid;
+        border-radius: 2px;
+        animation: jumpInfinite 1.5s infinite;
+
+        &:after {
+            content: " ";
+            position: absolute;
+            top: 12px;
+            left: -10px;
+            width: 16px;
+            height: 16px;
+            border-bottom: 4px solid;
+            border-right: 4px solid;
+            border-radius: 4px;
+            transform: rotateZ(45deg);
+        }
+    }
+
+    @keyframes jumpInfinite {
+        0% {
+            margin-top: 0;
+        }
+        50% {
+            margin-top: 20px;
+        }
+        100% {
+            margin-top: 0;
+        }
+    }
+}
+
+//In-paragraph link
+.link {
+    position: relative;
+    color: white;
+    transition: color 0.3s ease-in-out;
+    z-index: 0;
+
+    &:before {
+        content: "";
+        display: block;
+        position: absolute;
+        inset: 0;
+        width: 0;
+        background-color: yellow;
+        transition: width 0.3s ease-in-out;
+        z-index: -1;
+    }
+    &:after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 0.4vh;
+        bottom: -0.4vh;
+        left: 0;
+        background-color: yellow;
+    }
+    &:hover {
+        color: black;
+    }
+    &:hover:before {
+        width: 100%;
+    }
+
+    &:hover:after {
+        width: 0%;
+    }
+}
+
+/*INTRO SECTION STYLING*/
+#intro-sect {
+    color: white;
+    .intro-line {
+        margin-left: 10vw;
+    }
+
+    .intro-line#salut {
+        font-size: 2.5vw;
+        margin-top: 10vh;
+        margin-bottom: 1vh;
+        width: fit-content;
+        margin-right: 0 !important;
+    }
+
+    .skill-summary {
+        text-align: center;
+        &#one-liner {
+            font-weight: 400;
+            font-size: 2.5vw;
+        }
+
+        &#second-liner {
+            font-weight: 200;
+            font-size: 1.5vw;
+        }
+    }
+    svg.intro-line {
+        display: block;
+        width: 55vw;
+        height: 35vh;
+        z-index: 2;
+    }
+
+    //I's dot
+    .bouncy {
+        position: relative;
+        fill: rgb(249, 252, 33);
+        animation: bounce 0.4s;
+        animation-iteration-count: 8;
+        animation-direction: alternate;
+        z-index: 40000000;
+    }
+
+    @keyframes bounce {
+        from {
+            transform: translate3d(0, 0, 0);
+        }
+        to {
+            transform: translate3d(0, -1.9vh, 0);
+        }
+    }
+    #skills:before {
+        content: " ";
+        font-weight: 600;
+        border-bottom: solid 0.65vh rgb(249, 252, 33);
+        animation: text-animate infinite 10s;
+    }
+
+    @keyframes text-animate {
+        0% {
+            content: "Something-cool-here";
+        }
+
+        25% {
+            content: "Programmer";
+        }
+
+        50% {
+            content: "Problem-Solver";
+        }
+
+        75% {
+            content: "Tech-Enthusiast";
+        }
+
+        100% {
+            content: "Something-cool-here";
+        }
+    }
+}
+
+/**Education body**/
+#education-summary {
+    #education-body {
+        @include newBodyText(left, 2vw, 55vw);
+        @include emphasis();
+        .note {
+            @include note(left);
+            margin-left: -0.5vw;
+        }
+    }
+
+    img#profile-pic {
+        float: right;
+        position: relative;
+        right: 7.5vw;
+        width: 25vw;
+        height: auto;
+        top: 50%;
+        transform: translateY(-50%);
+        transition: box-shadow 0.2s ease-in, width 0.3s ease-in-out;
+        box-shadow: -2.75vw -2.65vw 0 -2vw yellow, 2.75vw 2.65vw 0 -2vw yellow;
+
+        &:hover {
+            width: 26vw;
+            box-shadow: 0 0 0 0 yellow, 0 0 0 0 yellow;
+        }
+    }
+}
+
+/*SKILL SECTION STYLES*/
+#skill-section {
+    #skill-body {
+        @include newBodyText(right, 2vw, 50vw);
+        @include emphasis();
+        .note {
+            @include note(left);
+            margin-left: -0.5vw;
+        }
+    }
+    .skill-sphere {
+        display: inline-block;
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+        font-weight: 800;
+        font-size: 2.5vw;
+        left: 2vw;
+        color: yellow;
+    }
+}
+
+#projects-section {
+    #projects-body {
+        @include emphasis();
+        @include newBodyText(left, 2vw, 50vw);
+    }
+    .note {
+        @include note(left);
+        margin-left: -0.8vw;
+    }
+
+    #projects-container {
+        float: right;
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 35vw;
+        height: 35vw;
+        right: 4vw;
+    }
+
+    .project-card {
+        position: absolute;
+        width: 48%;
+        height: 48%;
+        margin: 1vw;
+        background-color: rgb(33, 33, 33); //rgb(20, 20, 20);
+        border-radius: 0.5vw;
+        transition: all 0.2s ease-in-out;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .tile-icon {
+            display: block;
+            position: relative;
+            height: 40%;
+            width: auto;
+            padding: 1vw;
+            transition: all 0.2s ease-out;
+        }
+        .title {
+            width: 100%;
+            height: fit-content;
+            text-align: center;
+            display: block;
+            position: relative;
+            color: white;
+            font-size: 1.75vw;
+            font-weight: 750;
+            transition: all 0.2s ease-in-out;
+            z-index: 1;
+        }
+        .project-media {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.2s linear;
+        }
+        .project-description {
+            display: none;
+        }
+
+        .link {
+            display: none;
+        }
+        &:nth-of-type(1) {
+            top: 0;
+            left: 0;
+        }
+        &:nth-of-type(2) {
+            top: 0;
+            left: 50%;
+        }
+        &:nth-of-type(3) {
+            top: 50%;
+            left: 0;
+        }
+        &:nth-of-type(4) {
+            top: 50%;
+            left: 50%;
+            .title {
+                font-size: 1.3vw;
+            }
+        }
+        &:hover {
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            background-color: white;
+
+            .title {
+                color: black;
+                font-size: 4vw;
+                font-weight: 800;
+                text-align: left;
+                margin-left: 1vw;
+                align-self: flex-start;
+            }
+
+            .title#hackmit {
+                font-size: 2.7vw;
+            }
+
+            .tile-icon {
+                display: none;
+            }
+            .project-media {
+                display: block;
+                height: 40%;
+                width: 70%;
+                opacity: 1;
+                padding: 1vw;
+            }
+
+            .project-description {
+                display: block;
+                margin-left: 1vw;
+                font-size: 1.4vw;
+                align-self: flex-start;
+                padding: 0.25vw;
+            }
+
+            .link {
+                display: block;
+                font-size: 1vw;
+                margin-left: 1.25vw;
+                align-self: flex-start;
+                font-weight: 500 !important;
+                color: black;
+                width: fit-content;
+            }
+        }
+    }
+}
+
+/*Contact Section Styling */
+#contact-section {
+    #contact-body {
+        @include emphasis();
+        @include newBodyText(right, 2.1vw, 45vw);
+        right: 3vw;
+        top: 55%;
+        .note {
+            @include note(left);
+            font-size: 1.2vw;
+            margin-left: -1vw;
+        }
+        #socials-btn-row {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            width: 80%;
+            padding: 3vw;
+            a {
+                font-weight: 500;
+            }
+            .socials-btn {
+                display: inline;
+                width: 5vw;
+                height: 5vw;
+                border-radius: 7vw;
+                border-style: solid;
+                border-width: 0.5vw;
+                border-color: yellow;
+                padding: 1vw;
+                background-color: transparent;
+                img {
+                    display: block;
+                    position: relative;
+                    height: 85%;
+                    width: 85%;
+                    top: 50%;
+                    left: 50%;
+                    transform: translateX(-50%) translateY(-50%);
+                }
+            }
+        }
+    }
+    .stagger-visualizer {
+        display: flex;
+        float: left;
+        position: relative;
+        left: 7.5vw;
+        top: 50%;
+        transform: translateY(-50%);
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        width: 30vw;
+        div {
+            width: 2vw;
+            height: 2vw;
+            margin: 0.5vw;
+            border: 0.02vw solid rgb(232, 232, 3);
+            background-color: rgb(237, 237, 0);
+        }
+    }
+}
+
+/** For Mobile Devices**/
+@media screen and (max-width: 480px) {
+    @mixin newBodyText($fontSize, $width) {
+        font-size: $fontSize;
+        color: white;
+        font-weight: 400;
+        padding: 2.5vw;
+        width: $width;
+    }
+    @mixin emphasis() {
+        .emphasis {
+            display: inline;
+            font-size: 7vw;
+            font-weight: 500;
+        }
+    }
+
+    @mixin note($align) {
+        text-align: $align;
+        color: white;
+        font-weight: 400;
+        font-size: 3vw;
+        padding: 1.4vw;
+        margin-left: -1vw;
+    }
+
+    body {
+        a {
+            /*Arrow link in the intro section*/
+            .down-arrow {
+                top: 75vh;
+            }
+
+            @keyframes jumpInfinite {
+                0% {
+                    margin-top: 0;
+                }
+                50% {
+                    margin-top: 20px;
+                }
+                100% {
+                    margin-top: 0;
+                }
+            }
+        }
+
+        #intro-sect {
+            display: flex;
+            flex-direction: column;
+            #intro-body {
+                position: relative;
+                top: 30%;
+                transform: translateY(-30%);
+            }
+            .intro-line#salut {
+                position: relative;
+                font-size: 7vw;
+                margin-top: 6vw;
+            }
+            .skill-summary {
+                &#one-liner {
+                    font-size: 7vw;
+                }
+
+                &#second-liner {
+                    font-size: 3vw;
+                }
+            }
+
+            svg.intro-line {
+                width: 90vw;
+                height: 18.5vh;
+                margin-top: 1vh;
+                margin-left: 6vw;
+            }
+
+            @keyframes bounce {
+                from {
+                    transform: translate3d(0, 0, 0);
+                }
+                to {
+                    transform: translate3d(0, -3vh, 0);
+                }
+            }
+            #skills:before {
+                border-bottom: solid 0.25vh rgb(249, 252, 33);
+            }
+        }
+
+        #education-summary {
+            #education-body {
+                display: block;
+                position: absolute;
+                top: 70%;
+                left: 3vw;
+
+                @include newBodyText(4vw, 90vw);
+                @include emphasis();
+                .note {
+                    @include note(left);
+                }
+            }
+
+            img#profile-pic {
+                position: absolute;
+                left: 10vw;
+                top: 30%;
+                height: 40vh;
+                width: auto;
+                transition: box-shadow 0.2s ease-in, width 0.3s ease-in-out;
+                box-shadow: -2.75vh -2.65vh 0 -2vh yellow,
+                    2.75vh 2.65vh 0 -2vh yellow;
+
+                &:hover {
+                    position: absolute;
+                    left: 10vw;
+                    top: 30%;
+                    height: 40vh;
+                    width: auto;
+                    transition: box-shadow 0.2s ease-in, width 0.3s ease-in-out;
+                    box-shadow: -2.75vw -2.65vw 0 -2vw yellow,
+                        2.75vw 2.65vw 0 -2vw yellow;
+                }
+            }
+        }
+
+        #skill-section {
+            #skill-body {
+                display: block;
+                position: absolute;
+                top: 67%;
+                left: 3vw;
+                @include newBodyText(4vw, 90vw);
+                @include emphasis();
+                .note {
+                    @include note(left);
+                }
+            }
+            .skill-sphere {
+                display: block;
+                position: absolute;
+                top: 30%;
+                text-align: center;
+                font-size: 6.3vw;
+            }
+        }
+
+        #projects-section {
+            display: flex;
+            flex-direction: column;
+            justify-items: center;
+            align-items: center;
+            #projects-body {
+                display: block;
+                position: absolute;
+                top: 24%;
+                left: 3vw;
+                @include emphasis();
+                @include newBodyText(4vw, 90vw);
+            }
+            .note {
+                @include note(left);
+            }
+
+            #projects-container {
+                display: block;
+                position: absolute;
+                top: 40%;
+                left: auto;
+                right: auto;
+                height: 42vh;
+                width: 42vh;
+                transform: translateY(0);
+            }
+
+            .project-card {
+                border-radius: 1vw;
+                transition: all 0.2s ease-in-out;
+                .tile-icon {
+                    transition: all 0.2s ease-out;
+                }
+                .title {
+                    font-size: 3.5vw;
+                    font-weight: 750;
+                    transition: all 0.2s ease-in-out;
+                }
+                &:nth-of-type(4) {
+                    top: 50%;
+                    left: 50%;
+                    .title {
+                        font-size: 3vw;
+                    }
+                }
+                &:hover {
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    z-index: 2;
+                    background-color: white;
+                    // display: block;
+
+                    .title {
+                        color: black;
+                        font-size: 8vw;
+                        font-weight: 800;
+                        text-align: left;
+                        margin-left: 2vw;
+                        align-self: flex-start;
+                    }
+
+                    .title#hackmit {
+                        font-size: 6vw;
+                    }
+
+                    .project-media {
+                        display: block;
+                        height: 40%;
+                        width: 80%;
+                        opacity: 1;
+                        padding: 1vw;
+                        top: 5%;
+                    }
+
+                    .project-description {
+                        margin-left: 2vw;
+                        font-size: 3.3vw;
+                        align-self: flex-start;
+                        padding: 0.5vw;
+                        font-weight: 400;
+                    }
+
+                    .link {
+                        display: block;
+                        font-size: 3.3vw;
+                        margin-left: 2.4vw;
+                        align-self: flex-start;
+                        font-weight: 500 !important;
+                        color: black;
+                        width: fit-content;
+                    }
+                }
+            }
+        }
+        #contact-section {
+            #contact-body {
+                text-align: center;
+                @include newBodyText(4.7vw, 90vw);
+                @include emphasis();
+                top: 35%;
+                .note {
+                    @include note(center);
+                    font-size: 3.7vw;
+                    margin-left: -1vw;
+                }
+                #socials-btn-row {
+                    width: 100%;
+                    padding: 10vw 0;
+                    a {
+                        font-weight: 500;
+                    }
+                    .socials-btn {
+                        display: inline;
+                        width: 13vw;
+                        height: 13vw;
+                        border-radius: 13vw;
+                        border-style: solid;
+                        border-width: 1.5vw;
+                        border-color: yellow;
+                        padding: 1.3vh;
+                        background-color: transparent;
+                        img {
+                            display: block;
+                            position: relative;
+                            height: 85%;
+                            width: 85%;
+                        }
+                    }
+                }
+            }
+            .stagger-visualizer {
+                display: flex;
+                float: left;
+                position: relative;
+                left: 7.5vw;
+                top: 17%;
+                left: 50%;
+                transform: translateY(-17%) translateX(-50%);
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                width: 60vw;
+                div {
+                    width: 4.3vw;
+                    height: 4.3vw;
+                    margin: 1vw;
+                    border: 0.04vw solid rgb(232, 232, 3);
+                    background-color: rgb(237, 237, 0);
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 2000px) {
+    #intro-sect {
+        //I's dot
+        @keyframes bounce {
+            from {
+                transform: translate3d(0, 0, 0);
+            }
+            to {
+                transform: translate3d(0, -0.7vh, 0);
+            }
+        }
+    }
+}

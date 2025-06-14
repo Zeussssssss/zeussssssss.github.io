@@ -2,13 +2,14 @@
 title: Aditya Kumar
 position: Ph.D. Student
 affiliation: Purdue University
+affiliation_link: https://www.purdue.edu/
 email: kumar976 (at) purdue.edu
 
 # Search Engine Optimization (SEO)
 # The following information is used to improve the website traffic from search engines, e.g., Google.
-keywords: aditya kumar, Aditya Kumar
+keywords:
 description: Aditya Kumar is a Computer Science Ph.D. student at Purdue University, specializing in Computer Graphics and Vision. Previously, he studied at The University of Arizona. 
-canonical: https://minimal-light-theme.yliu.me/
+canonical: https://adityakumar.tech/
 
 # Links 
 # If you don't need one of them, you may delete the corresponding line.
