@@ -4,14 +4,14 @@
 
 .social-icons a{
   display:inline-block;
-  height:2.6rem;
-  width:2.6rem;
+  height:3.2rem;
+  width:3.2rem;
   background-color:transparent;
   color:#043361!important;
   border-radius:100%;
   text-align:center;
-  font-size:1.25rem;
-  line-height:2.7rem;
+  font-size:1.5rem;
+  line-height:3.3rem;
   margin-right:1.1rem}
 
 @media (prefers-color-scheme: dark) { .social-icons a {color: #3eb7f0 !important; }}
@@ -55,19 +55,19 @@
   }
 .icon-button{
   background-color:white;
-  border-radius:3.9rem;
+  border-radius:4.8rem;
   cursor:pointer;
   display:inline-block;
-  font-size:2.2rem;
-  height:3.9rem;
-  line-height:3.9rem;
+  font-size:2.6rem;
+  height:4.8rem;
+  line-height:4.8rem;
   margin:0 5.5px;
   position:relative;
   text-align:center;
   -webkit-user-select:none;
   -moz-user-select:none;
   -ms-user-select:none;
-  user-select:none;width:3.9rem}
+  user-select:none;width:4.8rem}
 
 .icon-button span{
   border-radius:0;
@@ -84,10 +84,10 @@
   width:0}
 
 .icon-button:hover span{
-  width:3.9rem;
-  height:3.9rem;
-  border-radius:3.9rem;
-  margin:-1.95rem}
+  width:4.8rem;
+  height:4.8rem;
+  border-radius:4.8rem;
+  margin:-2.4rem}
 
 .twitter span{
   background-color:#4099ff}
@@ -109,16 +109,16 @@ email {
 .icon-button i{
   background:none;
   color:white;
-  height:3.9rem;
+  height:4.8rem;
   left:0;
-  line-height:3.9rem;
+  line-height:4.8rem;
   position:absolute;
   top:0;
   -webkit-transition:all 0.3s;
   -moz-transition:all 0.3s;
   -o-transition:all 0.3s;
   transition:all 0.3s;
-  width:3.9rem;
+  width:4.8rem;
   z-index:10}
 
 .icon-button .icon-twitter{
